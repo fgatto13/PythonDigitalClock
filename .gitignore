@@ -1,0 +1,28 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Logs
+logs/
+*.log
+
+# Packaging / distribution
+build/
+dist/
+*.egg-info/
+
+# macOS system files
+.DS_Store
+
+# PyInstaller or py2app
+*.spec
+*.app
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Python environment files
+*.env
