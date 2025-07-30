@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
 from PyQt5.QtCore import QTimer, Qt, QTime
 # to add a custom font:
@@ -50,7 +52,16 @@ class DigitalClock(QWidget):
 
     def load_font(self):
         try:
-            font_path = os.path.join(os.path.dirname(__file__), "fonts/ds_digital/DS-DIGIT.TTF")
+            if hasattr(sys, '_MEIPASS'):
+                # For PyInstaller, not py2app, but kept for portability
+                base_path = sys._MEIPASS
+            elif getattr(sys, 'frozen', False):
+                # Running inside a macOS .app bundle
+                base_path = os.path.join(os.path.dirname(sys.executable), "..", "Resources")
+            else:
+                # Normal execution
+                base_path = os.path.dirname(__file__)
+            font_path = os.path.abspath(os.path.join(base_path, "fonts", "ds_digital", "DS-DIGIT.TTF"))
 
             # to add a downloaded font, we use the QFontDatabase:
             # - it is a class for managing and querying fonts available to the application
@@ -76,3 +87,4 @@ class DigitalClock(QWidget):
             my_font = QFont()
             my_font.setPointSize(150)
         self.time_label.setFont(my_font)
+
