@@ -103,5 +103,21 @@ These are caught gracefully and logged via Python’s `logging` module.
 
 ## 🧑‍💻 Author
 
-Built by @fgatto13, based on the work made by BroCode.  
+Built by @fgatto13.
 Cleanly written and modularized to demonstrate PyQt5 best practices.
+
+---
+
+## 🙏 Credits & Acknowledgments
+
+This project is based on a PyQt5 digital clock tutorial originally created by [BroCode](https://www.youtube.com/watch?v=ix9cRaBkVe0&t=17196s).
+
+The original tutorial served as a foundation for building a minimal clock GUI.  
+This version expands upon it with:
+
+- Exception-safe font handling
+- Robust logging to timestamped files
+- Modular project structure (`main.py`, `digitalClock.py`, `logConfig.py`)
+- Best practices for maintainability and error traceability
+
+These enhancements aim to demonstrate real-world engineering standards, especially around resilience and observability.
