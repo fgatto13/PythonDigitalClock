@@ -100,7 +100,77 @@ Exception types handled during font loading:
 These are caught gracefully and logged via Python’s `logging` module.
 
 ---
+---
 
+## 🍎 Building a macOS `.app` (Standalone Application)
+
+You can turn this project into a native macOS `.app` using [`py2app`](https://py2app.readthedocs.io/en/latest/). Follow the steps below:
+
+### ✅ Recommended Python Version
+Use **Python 3.11** — `py2app` is not compatible with Python 3.13+ as of now.
+
+---
+
+### ⚙️ Setup Instructions
+
+```bash
+# Install Python 3.11 via Homebrew (if needed)
+brew install python@3.11
+
+# Create and activate a virtual environment
+python3.11 -m venv venv311
+source venv311/bin/activate
+
+# Install dependencies
+pip install pyqt5 py2app
+```
+
+---
+
+### 🧱 Build the `.app`
+
+```bash
+python3 setup.py py2app
+```
+
+This will create a standalone app in the `dist/` folder:
+```
+dist/
+└── main.app
+```
+
+To run it:
+```bash
+open dist/main.app
+```
+
+To run it from the terminal and see logs:
+```bash
+./dist/main.app/Contents/MacOS/main
+```
+
+---
+
+### 📁 Fonts in App Bundle
+
+The custom font is bundled inside the app at:
+```
+main.app/Contents/Resources/fonts/ds_digital/DS-DIGIT.TTF
+```
+
+The `load_font()` method in the code auto-detects whether the app is running in a bundle and adjusts the font path accordingly.
+
+---
+
+### ⚠️ macOS Gatekeeper Notice
+
+If the app fails to launch due to security restrictions, run:
+
+```bash
+xattr -dr com.apple.quarantine dist/main.app
+```
+
+This removes the quarantine flags and allows unsigned apps to run.
 ## 🧑‍💻 Author
 
 Built by @fgatto13.
