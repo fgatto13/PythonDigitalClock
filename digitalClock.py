@@ -35,8 +35,6 @@ class DigitalClock(QWidget):
         # and style it a bit:
         self.time_label.setStyleSheet("font-size: 150px;"
                                       "color: hsl(111, 100%, 50%);")
-        # now let's change the background color of the window
-        self.setStyleSheet("background-color: black;")
 
         self.load_font()
 
@@ -47,8 +45,16 @@ class DigitalClock(QWidget):
 
     # now we want to define a function to update the time
     def update_time(self):
-        current_time = QTime.currentTime().toString("hh:mm:ss AP") # AP stands for am-pm
-        self.time_label.setText(current_time)
+        current_time = QTime.currentTime()
+        self.time_label.setText(current_time.toString("hh:mm:ss AP"))
+        # light mode from 6:00 AM to 7:00 PM
+        start_day = QTime(6, 0, 0)
+        end_day = QTime(19, 0, 0)
+        # let's add a light/dark mode based on the current time:
+        if start_day < current_time < end_day:
+            self.setStyleSheet("background-color: #f9f9f9;")  # light background
+        else:
+            self.setStyleSheet("background-color: black;")  # dark background
 
     def load_font(self):
         try:

@@ -1,9 +1,12 @@
 # Python Digital Clock ⏰
 ## 🖼 App Preview
-![App Preview](assets/Screenshot.png)
+![App Preview](assets/dark.png)
+![App Preview](assets/light.png)
 **Made using PyQt5**
 
-A minimal desktop digital clock built with PyQt5, featuring a custom 7-segment-style font, dynamic layout, and robust exception handling. This project demonstrates modular GUI programming, file-based logging, and safe resource loading.
+A minimal desktop digital clock built with PyQt5, featuring a custom 7-segment-style font, dynamic layout, 
+light and dark mode (based on current time), and robust exception handling. 
+This project demonstrates modular GUI programming, file-based logging, and safe resource loading.
 
 ---
 
