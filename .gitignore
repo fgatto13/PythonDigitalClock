@@ -23,6 +23,7 @@ dist/
 .venv/
 env/
 venv/
+venv311/
 
 # Python environment files
 *.env
